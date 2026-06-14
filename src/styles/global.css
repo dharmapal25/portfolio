@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap'); */
+/* <style> */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+/* </style> */
 
 * {
   user-select: none;
@@ -20,7 +22,7 @@
   --accent-dim: #ffc8b411;
   --accent-glow: #64ffda26;
 
-  --font-display: 'Fira Code', monospace;
+    --font-display:  "Share Tech", sans-serif;
   --font-body: 'DM Sans', sans-serif;
 
   --nav-height: 72px;
@@ -30,6 +32,9 @@
   --radius: 10px;
   --radius-lg: 16px;
 }
+
+
+
 
 *,
 *::before,

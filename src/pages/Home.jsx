@@ -11,10 +11,11 @@ export default function Home() {
 
       <div className="home__content">
 
-        <p className="home__greeting">Hello, <span style={{color : "#fff", fontSize : "20px" }} >I'm</span></p>
+        <p className="home__greeting"><span style={{ color: "#fff", fontSize: "20px" }} ></span></p>
 
         <h1 className="home__name">
-          Dharmapal<span className="cursor">_</span>
+          Turning Ideas Into
+          Production -Ready web Applications.<span className="cursor">_</span>
         </h1>
 
         <h2 className="home__role">
@@ -22,15 +23,15 @@ export default function Home() {
         </h2>
 
         <p className="home__tagline">
-          I build fast, scalable, real-world web apps —<br />
-          from pixel-perfect UIs to production-ready backends.
+          I build fast, scalable, real-world web apps —
+          from pixel-perfect UIs to AI-powered, production-ready backends.
         </p>
 
-        <div className="home__stack">
-          {['MERN Stack', 'Socket.IO', 'React', 'Node.js', 'MongoDB'].map(t => (
+        {/* <div className="home__stack">
+          {['MERN Stack', 'Socket.IO', 'React', 'Node.js', 'MongoDB', "Rag"].map(t => (
             <span key={t} className="home__stack-pill">{t}</span>
           ))}
-        </div>
+        </div> */}
 
         <div className="home__buttons">
           <button

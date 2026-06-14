@@ -15,18 +15,18 @@ const projects = [
   {
     title: 'Flash OS - (Web Operating System)',
     desc: 'Built a macOS-inspired Web OS in React with draggable/resizable windows, built-in apps like Notepad, Terminal, Music and more, persistent themes & wallpapers, and a responsive UI with macOS-style dock.',
-    tech: ['React', 'react-rnd',"css"],
+    tech: ['React', 'react-rnd', "css"],
     emoji: '📋',
     github: 'https://github.com/dharmapal25',
     live: 'https://flashos.vercel.app/',
   },
   {
-    title: 'Linked List Visualizer',
-    desc: 'Interactive DOM-based visualization of Linked List operations — insert, delete, reverse — built with vanilla JavaScript.',
-    tech: ['JavaScript', 'HTML5', 'CSS3', 'DOM API'],
-    emoji: '🔗',
-    github: 'https://github.com/dharmapal',
-    live: '#',
+    title: 'FlashGPT',
+    desc: 'Built an AI-powered assistant using RAG: ingests docs, indexes embeddings with Pinecone, queries an LLM for context-aware answers, stores chat history in MongoDB, and provides a React + Express UI for seamless conversational search.',
+    tech: ['React', 'Express', "MongoDB", "Rag", "Pinecone", "LLM"],
+    emoji: '📋',
+    github: 'https://github.com/dharmapal25/AI-and-RAG',
+    live: 'https://flashgpt-ai.vercel.app/',
   },
 ]
 

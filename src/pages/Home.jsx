@@ -1,13 +1,27 @@
 import { useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
+import Threads from './Threads'
+
 
 export default function Home() {
   const navigate = useNavigate()
 
   return (
     <main className="home">
-      <div className="home__bg" />
-      <div className="home__bg-2" />
+      {/* <div className="home__bg" /> */}
+
+
+<div style={{ width: '100%', height: '600px', position: 'absolute',top : "10%" }}>
+  <Threads
+    amplitude={1}
+    distance={0.3}
+    enableMouseInteraction
+    
+  />
+</div>
+
+
+      {/* <div className="home__bg-2" /> */}
 
       <div className="home__content">
 

@@ -1,111 +1,129 @@
-.skills {
-  min-height: 100vh;
-  padding: 100px 0;
-  display: flex;
-  align-items: center;
-}
-
-.skills__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
-}
-
-.skills__card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px 32px 32px;
-  min-width: 25vw;
-  transition: border-color var(--transition), transform var(--transition),
-              box-shadow var(--transition);
-  animation: fadeUp 0.6s ease both;
-}
-
-.skills__card:hover {
-  border-color: #ffa36159;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px #ffa66612;
-}
-
-.skills__card-title {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 22px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-}
-
-.skills__list {
-  list-style: none;
+.sg-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-.skills__item {
-  display: flex;
   align-items: center;
-  gap: 12px;
+  padding: 80px 24px 60px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.sg-eyebrow {
   font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: all var(--transition);
-  cursor: default;
-}
-
-.skills__item::before {
-  content: '✦';
+  font-size: 11px;
+  letter-spacing: 0.16em;
   color: var(--accent);
-  font-size: 16px;
-  line-height: 1;
-  flex-shrink: 0;
+  margin-bottom: 8px;
 }
 
-.skills__item:hover {
+.sg-heading {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 400;
   color: var(--text-primary);
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+
+.sg-canvas {
+  cursor: grab;
+  display: block;
+  max-width: 100%;
+}
+
+.sg-canvas:active {
+  cursor: grabbing;
+}
+
+.sg-drag-hint {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-family: var(--font-body);
+  letter-spacing: 0.1em;
+}
+
+.sg-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sg-tab {
+  padding: 5px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all var(--transition);
+}
+
+.sg-tab:hover,
+.sg-tab.active {
+  border-color: var(--accent);
+  color: var(--accent);
   background: var(--accent-dim);
 }
 
-.skills__item:hover .skills__item-icon {
-  color: var(--accent);
+.sg-panel {
+  margin-top: 14px;
+  background: #03030318;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 20px;
+  width: 100%;
+  max-width: 580px;
 }
 
-.skills__item-icon {
-  font-size: 17px;
-  color: var(--text-muted);
+.sg-panel-header {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-  transition: color var(--transition);
+  justify-content: space-between;
+  margin-bottom: 6px;
 }
 
-.skills__item-name {
-  flex: 1;
-  letter-spacing: 0.3px;
+.sg-panel-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: var(--font-body);
 }
 
-@media (max-width: 768px) {
-  .skills__grid {
-    grid-template-columns: 1fr;
-  }
+.sg-panel-count {
+  font-size: 11px;
+  color: var(--accent);
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
 }
 
-@media (max-width: 928px) {
-  .skills__grid {
-    grid-template-columns: 1fr;
-  }
+.sg-panel-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+  line-height: 1.5;
 }
 
-@media (min-width: 929px) and (max-width: 1024px) {
-  .skills__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.sg-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sg-pill {
+  padding: 3px 10px;
+  border-radius: 9px;
+  border: 1px solid;
+  font-size: 11px;
+  font-family: var(--font-body);
+  cursor: default;
+  transition: filter var(--transition);
+}
+
+.sg-pill:hover {
+  filter: brightness(1.4);
 }

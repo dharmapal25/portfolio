@@ -1,6 +1,10 @@
 import React from 'react'
 import "../styles/Projects.css"
 import project_1 from "../../public/tanjiro.jpg"
+import { BsGithub } from 'react-icons/bs'
+import { BiLinkExternal } from 'react-icons/bi'
+// import TiltCard from './TiltCard'
+
 const Projects = () => {
 
   let projects = [
@@ -15,6 +19,26 @@ const Projects = () => {
     },
     {
       id: 2,
+      image: project_1,
+      title: "MERN",
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure dolor id qui eligendi cum beatae placeat facilis consequuntur, dolorum perferendis explicabo excepturi amet nulla delectus eaque odit. Repudiandae, molestias iste.',
+      tech: ["react", "mongoDB", "pincone", "express"],
+      github: "https://github.com/dharmapal25",
+      live: "https://github.com/dharmapal25"
+
+    },
+    {
+      id: 3,
+      image: project_1,
+      title: "MERN",
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure dolor id qui eligendi cum beatae placeat facilis consequuntur, dolorum perferendis explicabo excepturi amet nulla delectus eaque odit. Repudiandae, molestias iste.',
+      tech: ["react", "mongoDB", "pincone", "express"],
+      github: "https://github.com/dharmapal25",
+      live: "https://github.com/dharmapal25"
+
+    },
+    {
+      id: 4,
       image: project_1,
       title: "MERN",
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure dolor id qui eligendi cum beatae placeat facilis consequuntur, dolorum perferendis explicabo excepturi amet nulla delectus eaque odit. Repudiandae, molestias iste.',
@@ -54,13 +78,25 @@ const Projects = () => {
               </div>
 
               <div className="project-links">
-                <a href={project.github}>Code</a>
-                <a href={project.live}>Live</a>
+                <a href={project.github}
+                  target='_blank'
+                  className='links' >
+                  <BsGithub />
+                </a>
+
+                <a href={project.live}
+                  className='links' >
+                  <BiLinkExternal style={{cursor:"pointer"}} />
+                </a>
+
               </div>
+
             </div>
           </article>
         ))}
       </div>
+        {/* <TiltCard/> */}
+
     </section>
   )
 }

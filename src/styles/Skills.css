@@ -28,6 +28,13 @@
   cursor: grab;
   display: block;
   max-width: 100%;
+  /* background: red !important; */
+}
+
+.sg-canvas {
+  background: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 .sg-canvas:active {
@@ -54,12 +61,13 @@
   padding: 5px 16px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 12px;
+  background: transparent ;
+  color: var(--text-primary);
+  font-size: 14px;
   cursor: pointer;
   font-family: var(--font-body);
   transition: all var(--transition);
+  backdrop-filter: blur(14px);
 }
 
 .sg-tab:hover,
@@ -77,6 +85,8 @@
   padding: 14px 20px;
   width: 100%;
   max-width: 580px;
+  backdrop-filter: blur(17px);
+  background: #73737318;
 }
 
 .sg-panel-header {
@@ -118,7 +128,7 @@
   padding: 3px 10px;
   border-radius: 9px;
   border: 1px solid;
-  font-size: 11px;
+  font-size: 13px;
   font-family: var(--font-body);
   cursor: default;
   transition: filter var(--transition);

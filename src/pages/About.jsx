@@ -1,6 +1,8 @@
 import '../styles/About.css'
+import '../pages/App.css'
 import photo from "../../public/assets/photo.jpg"
 import Timeline from '../components/Timeline'
+import ColorBends from './ColorBends'
 const facts = [
   'LIT Lucknow — B.Tech CSE',
   '2nd Year Student',
@@ -11,7 +13,22 @@ export default function About() {
   return (
     <section className="about">
       <title>Dharmapal | About</title>
-
+          <ColorBends
+            colors={["#1b1b1bff", "#000000ff"]}
+            rotation={73}
+            speed={0.4}
+            scale={1}
+            frequency={1}
+            warpStrength={1}
+            mouseInfluence={0.75}
+            noise={0}
+            parallax={0.5}
+            iterations={1}
+            intensity={1.5}
+            bandWidth={4.5}
+            transparent
+            autoRotate={0}
+            />
       <div className="container">
         <div className="about__inner">
 

@@ -36,7 +36,6 @@ export default function Navbar() {
         {/* LOGO */}
         <div className="navbar__logo" onClick={() => navigate('/')}>
           Flash<span><IoFlash style={{ fill: '#e67147e1', height: "19px", width: "20px" }} />dev</span>
-          {/* Flash<span><curent style={{fill : '#e67147e1',height : "19px",width : "20px"}} />dev</span> */}
         </div>
 
         {/* DESKTOP NAV */}

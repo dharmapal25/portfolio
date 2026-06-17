@@ -13,6 +13,7 @@ import { TbApi, TbBrandThreejs } from "react-icons/tb";
 import { BiData } from "react-icons/bi";
 import "../styles/Skills.css";
 import { CgVercel } from "react-icons/cg";
+import ColorBends from "./ColorBends";
 
 
 // ── 1. SKILLS DATA ──────────────────────────────────────────────────────────
@@ -136,68 +137,128 @@ export default function SkillsGlobe() {
         const ry = Math.sin(lat * Math.PI / 180), rr = Math.cos(lat * Math.PI / 180);
         ctx.beginPath(); let f = true;
         for (let i = 0; i <= SEGS; i++) { const a = (i / SEGS) * Math.PI * 2, p = proj(rr * Math.cos(a), ry, rr * Math.sin(a)); f ? ctx.moveTo(p.px, p.py) : ctx.lineTo(p.px, p.py); f = false; }
-        ctx.strokeStyle = "#1a6b8f"; ctx.lineWidth = 0.6; ctx.stroke();
+        ctx.strokeStyle = "#7ca7b9ff"; ctx.lineWidth = 0.6; ctx.stroke();
       }
       for (let lng = 0; lng < 180; lng += 15) {
         const ang = lng * Math.PI / 180;
         ctx.beginPath(); let f = true;
         for (let i = 0; i <= SEGS; i++) { const a = (i / SEGS) * Math.PI * 2, rr = Math.cos(a), p = proj(rr * Math.cos(ang), Math.sin(a), rr * Math.sin(ang)); f ? ctx.moveTo(p.px, p.py) : ctx.lineTo(p.px, p.py); f = false; }
-        ctx.strokeStyle = "#1a6b8f"; ctx.lineWidth = 0.6; ctx.stroke();
+        ctx.strokeStyle = "#7ca7b9ff"; ctx.lineWidth = 0.6; ctx.stroke();
       }
     }
 
     let rafId;
-    function draw() {
-      ctx.fillStyle = "#080608"; ctx.fillRect(0, 0, W, H);
-      stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(255,255,255,${s.a})`; ctx.fill(); });
-      wireframe();
 
-      const rendered = SP
-        .map(s => { const p = proj(s.x, s.y, s.z); return { ...s, ...p }; })
-        .sort((a, b) => a.z - b.z);
+function draw() {
 
-      rendered.forEach(s => {
-        const opa = Math.max(0.07, Math.min(0.95, (s.z + 1) / 2 * 0.88 + 0.07));
-        const fs = Math.round(Math.max(8, 10 * Math.max(1, s.sc))); // font-size
-        const iconSize = Math.round(fs * 3);  // icons size
-        const gap = Math.round(4 * s.sc);
-        const pad = Math.round(8 * s.sc);
+  // IMPORTANT
+  ctx.clearRect(0, 0, W, H);
 
-        ctx.font = `${fs}px DM Sans, sans-serif`;
-        const tw = ctx.measureText(s.name).width;
-        const iconImg = iconImagesRef.current[s.name];
-        const hasIcon = iconImg && iconImg.complete && iconImg.naturalWidth > 0;
+  // Remove stars if you want fully transparent background
+  // stars.forEach(s => {
+  //   ctx.beginPath();
+  //   ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+  //   ctx.fillStyle = `rgba(255,255,255,${s.a})`;
+  //   ctx.fill();
+  // });
 
-        // pill dimensions include icon
-        const contentW = (hasIcon ? iconSize + gap : 0) + tw;
-        const pw = contentW + pad * 3; // padding icons + name
-        const ph = Math.max(iconSize + pad, Math.round(19 * s.sc));
-        const rx = s.px - pw / 2, ry = s.py - ph / 2, rr = ph / 2;
+  wireframe();
 
-        ctx.globalAlpha = opa;
-        rrect(ctx, rx, ry, pw, ph, rr);
-        const [rv, gv, bv] = hexRgb(s.color);
-        ctx.fillStyle = `rgba(${rv},${gv},${bv},0.1)`; ctx.fill();
-        ctx.strokeStyle = `rgba(${rv},${gv},${bv},0.45)`; ctx.lineWidth = 0.7; ctx.stroke();
+  const rendered = SP
+    .map(s => {
+      const p = proj(s.x, s.y, s.z);
+      return { ...s, ...p };
+    })
+    .sort((a, b) => a.z - b.z);
 
-        // draw icon
-        let textStartX = rx + pad;
-        if (hasIcon) {
-          ctx.drawImage(iconImg, rx + pad, s.py - iconSize / 2, iconSize, iconSize);
-          textStartX = rx + pad + iconSize + gap;
-        }
+  rendered.forEach(s => {
+    const opa = Math.max(
+      0.07,
+      Math.min(0.95, (s.z + 1) / 2 * 0.88 + 0.07)
+    );
 
-        // draw skill name
-        ctx.fillStyle = "#fff";
-        ctx.textAlign = "left";
-        ctx.textBaseline = "middle";
-        ctx.fillText(s.name, textStartX, s.py);
-        ctx.globalAlpha = 1;
-      });
+    const fs = Math.round(
+      Math.max(8, 10 * Math.max(1, s.sc))
+    );
 
-      if (!st.drag) st.rotY += 0.003;
-      rafId = requestAnimationFrame(draw);
+    const iconSize = Math.round(fs * 3);
+
+    const gap = Math.round(4 * s.sc);
+    const pad = Math.round(8 * s.sc);
+
+    ctx.font = `${fs}px DM Sans, sans-serif`;
+
+    const tw = ctx.measureText(s.name).width;
+
+    const iconImg = iconImagesRef.current[s.name];
+
+    const hasIcon =
+      iconImg &&
+      iconImg.complete &&
+      iconImg.naturalWidth > 0;
+
+    const contentW =
+      (hasIcon ? iconSize + gap : 0) + tw;
+
+    const pw = contentW + pad * 3;
+
+    const ph = Math.max(
+      iconSize + pad,
+      Math.round(19 * s.sc)
+    );
+
+    const rx = s.px - pw / 2;
+    const ry = s.py - ph / 2;
+    const rr = ph / 2;
+
+    ctx.globalAlpha = opa;
+
+    rrect(ctx, rx, ry, pw, ph, rr);
+
+    const [rv, gv, bv] = hexRgb(s.color);
+
+    ctx.fillStyle = `rgba(${rv},${gv},${bv},0.1)`;
+    ctx.fill();
+
+    ctx.strokeStyle = `rgba(${rv},${gv},${bv},0.45)`;
+    ctx.lineWidth = 0.7;
+    ctx.stroke();
+
+    let textStartX = rx + pad;
+
+    if (hasIcon) {
+      ctx.drawImage(
+        iconImg,
+        rx + pad,
+        s.py - iconSize / 2,
+        iconSize,
+        iconSize
+      );
+
+      textStartX =
+        rx + pad + iconSize + gap;
     }
+
+    ctx.fillStyle = "#fff";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(
+      s.name,
+      textStartX,
+      s.py
+    );
+
+    ctx.globalAlpha = 1;
+  });
+
+  if (!st.drag) {
+    st.rotY += 0.003;
+  }
+
+  rafId = requestAnimationFrame(draw);
+}
+
     draw();
 
     const onDown = e => { st.drag = true; st.lmx = e.clientX; st.lmy = e.clientY; };
@@ -244,6 +305,24 @@ export default function SkillsGlobe() {
   // ── JSX ──────────────────────────────────────────────────────────────────
   return (
     <section className="sg-section" id="skills">
+
+          <ColorBends
+            colors={["#1b1b1bff", "#000000ff"]}
+            rotation={73}
+            speed={0.4}
+            scale={1}
+            frequency={1}
+            warpStrength={1}
+            mouseInfluence={0.75}
+            noise={0}
+            parallax={0.5}
+            iterations={1}
+            intensity={1.5}
+            bandWidth={4.5}
+            transparent
+            autoRotate={0}
+            />
+
       <h2 className="sg-heading">Technical Expertise</h2>
 
       {/* ↓↓ GLOBE SIZE — change width & height here ↓↓ */}

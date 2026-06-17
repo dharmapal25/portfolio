@@ -305,6 +305,7 @@ function draw() {
   // ── JSX ──────────────────────────────────────────────────────────────────
   return (
     <section className="sg-section" id="skills">
+<title>Dharmapal | Skills</title>
 
           <ColorBends
             colors={["#1b1b1bff", "#000000ff"]}

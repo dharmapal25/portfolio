@@ -5,8 +5,8 @@ import Lenis from "lenis";
 import "./pages/App.css"
 
 const lenis = new Lenis({
-  duration: 2.5,      // jitna zyada, utna smooth
-  lerp: 0.05,         // lower = smoother
+  duration: 2.2,      // jitna zyada, utna smooth
+  lerp: 0.9,         // lower = smoother
   smoothWheel: true,
   wheelMultiplier: 0.8,
   touchMultiplier: 1.5,

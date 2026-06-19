@@ -6,7 +6,8 @@ import ColorBends from './ColorBends'
 const facts = [
   'LIT Lucknow — B.Tech CSE',
   '2nd Year Student',
-  'Lucknow, India'
+  'Lucknow, India',
+  " Always building something new"
 ]
 
 export default function About() {
@@ -32,28 +33,25 @@ export default function About() {
       <div className="container">
         <div className="about__inner">
 
-          <p className="section-label">About Me</p>
           <h2 className="section-title">Who I <span>Am</span></h2>
           <div className="section-divider" />
 
           <div className="about__grid">
 
             <div className="about__text">
+              
               <p>
-                Hey! I'm <strong>Dharmapal</strong>, a passionate full-stack developer
-                currently pursuing B.Tech in Computer Science at{' '}
-                <span className="accent">LIT Lucknow</span>. I love turning ideas
-                into real, working products that solve actual problems.
+                I'm <strong>Dharmapal</strong>, a 2nd-year Computer Science student at{' '}
+                <span className="accent">LIT Lucknow</span> who'd rather build than just
+                study theory. I enjoy turning ideas into real, working products that
+                solve actual problems — not just textbook projects.
               </p>
               <p>
-                My core stack is <strong>MERN</strong> (MongoDB, Express, React, Node.js)
-                and I enjoy building everything — real-time chat apps, task managers,
-                and interactive UIs. I also have a keen eye for clean design and
-                smooth user experiences.
+                My core stack is <strong>MERN</strong> (MongoDB, Express, React, Node.js),
+                and I love building everything end-to-end — real-time chat apps, task
+                managers, and interactive UIs. I also have a keen eye for clean design
+                and smooth, intuitive user experiences.
               </p>
-              {/* <p>
-              ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos placeat nam nesciunt commodi vel sapiente hic, explicabo, facilis ratione distinctio necessitatibus repudiandae aperiam, culpa fugit illum laborum! Nulla, dignissimos quis!
-              </p> */}
 
               <div className="about__facts">
                 {facts.map(fact => (

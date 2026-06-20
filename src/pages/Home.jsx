@@ -8,8 +8,6 @@ export default function Home() {
 
   return (
     <main className="home">
-      {/* <div className="home__bg" /> */}
-
 
 <div style={{ width: '100%', height: '600px', position: 'absolute',top : "10%" }}>
   <Threads
@@ -21,14 +19,18 @@ export default function Home() {
 </div>
 
 
-      {/* <div className="home__bg-2" /> */}
-
       <div className="home__content">
 
         <p className="home__greeting"><span style={{ color: "#fff", fontSize: "20px" }} ></span></p>
 
         <h1 className="home__name">
-          Turning Ideas Into Production -Ready <span className="web"></span> Applications.<span className="cursor">_</span>
+          Turning Ideas Into Production -Ready{' '}
+          <span className="web-tag">
+            <span className="web-tag__bracket">&lt;</span>
+            <span className="web-tag__text"><i>Web</i></span>
+            <span className="web-tag__bracket">/&gt;</span>
+          </span>{' '}
+          Applications.<span className="cursor">_</span>
         </h1>
 
         <h2 className="home__role">
@@ -40,11 +42,6 @@ export default function Home() {
           from pixel-perfect UIs to AI-powered, production-ready backends.
         </p>
 
-        <div className="home__stack">
-          {['MERN Stack', 'Socket.IO', 'React', 'Node.js', 'MongoDB', "Rag"].map(t => (
-            <span key={t} className="home__stack-pill">{t}</span>
-          ))}
-        </div>
 
         <div className="home__buttons">
           <button
@@ -62,9 +59,6 @@ export default function Home() {
         </div>
       </div>
 
-
-        {/* <div className="home__scroll-line" /> */}
-        {/* <span>Scroll</span> */}
     </main>
   )
 }

@@ -84,6 +84,26 @@
   animation: blink 1s step-end infinite;
 }
 
+/* --- "<web />" styled tag inside heading --- */
+.home__name .web-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+.home__name .web-tag__bracket {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.home__name .web-tag__text {
+  color: #9a9a9a;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
 .home__role {
   font-family: var(--font-display);
   font-size: clamp(22px, 3.5vw, 38px);
@@ -201,5 +221,15 @@
   .home__buttons .btn-secondary {
     width: 100%;
     justify-content: center;
+  }
+
+  .home__name .web-tag {
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 480px) {
+  .home__name .web-tag {
+    font-size: 0.75em;
   }
 }

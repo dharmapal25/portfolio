@@ -212,19 +212,31 @@ hr {
 
 }
 
-@media (min-width : 769px) and (max-width : 1579px) {
+@media (min-width : 769px) and (max-width : 1280px) {
   .projects-section {
     width: 100%;
   }
 
   .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 400px));
+    grid-template-columns: repeat(auto-fit, minmax(370px, 370px));
+    gap: 28px;
+  }
+}
+
+@media  (min-width: 1281px)  {
+
+  
+  .main-container {
+    overflow: hidden;
+
+  }
+
+  .main-container .projects-section .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(410px, 410px));
     gap: 28px;
   }
 
-
 }
-
 
 
 /* --------------- */

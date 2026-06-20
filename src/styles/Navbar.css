@@ -8,12 +8,7 @@
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar.scrolled {
-  /* background: rgba(9, 14, 26, 0.92); */
-  /* backdrop-filter: blur(12px); */
-  /* -webkit-backdrop-filter: blur(12px); */
-  /* box-shadow: 0 1px 0 var(--border); */
-}
+
 
 .navbar__inner {
   backdrop-filter: blur(12px);

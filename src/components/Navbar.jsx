@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import '../styles/Navbar.css'
 import { IoFlash } from 'react-icons/io5'
 
@@ -53,13 +53,14 @@ export default function Navbar() {
         </ul>
 
         <a
-          href="https://ik.imagekit.io/cblndrocc/Dharmapal_Resume.pdf"
+          href="https://ik.imagekit.io/cblndrocc/Dharmapal_Ai_Resume.pdf"
           className="navbar__resume"
           target="_blank"
           rel="noopener noreferrer"
         >
           Resume ↗
         </a>
+
 
         {/* HAMBURGER */}
         <button

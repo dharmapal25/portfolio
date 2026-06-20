@@ -28,8 +28,7 @@ export default function Home() {
         <p className="home__greeting"><span style={{ color: "#fff", fontSize: "20px" }} ></span></p>
 
         <h1 className="home__name">
-          Turning Ideas Into
-          Production -Ready web Applications.<span className="cursor">_</span>
+          Turning Ideas Into Production -Ready <span className="web"></span> Applications.<span className="cursor">_</span>
         </h1>
 
         <h2 className="home__role">
@@ -41,11 +40,11 @@ export default function Home() {
           from pixel-perfect UIs to AI-powered, production-ready backends.
         </p>
 
-        {/* <div className="home__stack">
+        <div className="home__stack">
           {['MERN Stack', 'Socket.IO', 'React', 'Node.js', 'MongoDB', "Rag"].map(t => (
             <span key={t} className="home__stack-pill">{t}</span>
           ))}
-        </div> */}
+        </div>
 
         <div className="home__buttons">
           <button
@@ -63,13 +62,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div
-        className="home__scroll"
-        onClick={() => navigate('/about')}
-      >
-        <span>Scroll</span>
-        <div className="home__scroll-line" />
-      </div>
+
+        {/* <div className="home__scroll-line" /> */}
+        {/* <span>Scroll</span> */}
     </main>
   )
 }

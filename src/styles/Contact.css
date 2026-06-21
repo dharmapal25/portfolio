@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
-  /* text-align: center; */
+  text-align: center;
   animation: fadeUp 0.7s ease both;
 }
 
@@ -20,7 +20,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 16px;
-  
+
 }
 
 .contact__heading {
@@ -28,11 +28,15 @@
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 24px;
+  margin-bottom: 36px;
   line-height: 1.15;
+  text-align: start;
+
 }
 
-.contact__heading span { color: var(--accent); }
+.contact__heading span {
+  color: var(--accent);
+}
 
 .contact__body {
   font-size: 16px;
@@ -47,7 +51,7 @@
 }
 
 .contact__email-btn {
-    display: inline-flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 30px;
@@ -62,8 +66,8 @@
   border-radius: var(--radius);
   cursor: pointer;
   transition: var(--transition);
-  border-bottom:  1px solid var(--text-primary);
-  border-right:  1px solid var(--text-primary);
+  border-bottom: 1px solid var(--text-primary);
+  border-right: 1px solid var(--text-primary);
   margin-bottom: 30px;
 }
 
@@ -123,4 +127,6 @@
   transition: opacity var(--transition);
 }
 
-.contact__footer a:hover { opacity: 0.75; }
+.contact__footer a:hover {
+  opacity: 0.75;
+}

@@ -147,115 +147,115 @@ export default function SkillsGlobe() {
 
     let rafId;
 
-function draw() {
+    function draw() {
 
-  // IMPORTANT
-  ctx.clearRect(0, 0, W, H);
+      // IMPORTANT
+      ctx.clearRect(0, 0, W, H);
 
-  // Remove stars if you want fully transparent background
-  // stars.forEach(s => {
-  //   ctx.beginPath();
-  //   ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-  //   ctx.fillStyle = `rgba(255,255,255,${s.a})`;
-  //   ctx.fill();
-  // });
+      // Remove stars if you want fully transparent background
+      // stars.forEach(s => {
+      //   ctx.beginPath();
+      //   ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      //   ctx.fillStyle = `rgba(255,255,255,${s.a})`;
+      //   ctx.fill();
+      // });
 
-  wireframe();
+      wireframe();
 
-  const rendered = SP
-    .map(s => {
-      const p = proj(s.x, s.y, s.z);
-      return { ...s, ...p };
-    })
-    .sort((a, b) => a.z - b.z);
+      const rendered = SP
+        .map(s => {
+          const p = proj(s.x, s.y, s.z);
+          return { ...s, ...p };
+        })
+        .sort((a, b) => a.z - b.z);
 
-  rendered.forEach(s => {
-    const opa = Math.max(
-      0.07,
-      Math.min(0.95, (s.z + 1) / 2 * 0.88 + 0.07)
-    );
+      rendered.forEach(s => {
+        const opa = Math.max(
+          0.07,
+          Math.min(0.95, (s.z + 1) / 2 * 0.88 + 0.07)
+        );
 
-    const fs = Math.round(
-      Math.max(8, 10 * Math.max(1, s.sc))
-    );
+        const fs = Math.round(
+          Math.max(8, 10 * Math.max(1, s.sc))
+        );
 
-    const iconSize = Math.round(fs * 3);
+        const iconSize = Math.round(fs * 3);
 
-    const gap = Math.round(4 * s.sc);
-    const pad = Math.round(8 * s.sc);
+        const gap = Math.round(4 * s.sc);
+        const pad = Math.round(8 * s.sc);
 
-    ctx.font = `${fs}px DM Sans, sans-serif`;
+        ctx.font = `${fs}px DM Sans, sans-serif`;
 
-    const tw = ctx.measureText(s.name).width;
+        const tw = ctx.measureText(s.name).width;
 
-    const iconImg = iconImagesRef.current[s.name];
+        const iconImg = iconImagesRef.current[s.name];
 
-    const hasIcon =
-      iconImg &&
-      iconImg.complete &&
-      iconImg.naturalWidth > 0;
+        const hasIcon =
+          iconImg &&
+          iconImg.complete &&
+          iconImg.naturalWidth > 0;
 
-    const contentW =
-      (hasIcon ? iconSize + gap : 0) + tw;
+        const contentW =
+          (hasIcon ? iconSize + gap : 0) + tw;
 
-    const pw = contentW + pad * 3;
+        const pw = contentW + pad * 3;
 
-    const ph = Math.max(
-      iconSize + pad,
-      Math.round(19 * s.sc)
-    );
+        const ph = Math.max(
+          iconSize + pad,
+          Math.round(19 * s.sc)
+        );
 
-    const rx = s.px - pw / 2;
-    const ry = s.py - ph / 2;
-    const rr = ph / 2;
+        const rx = s.px - pw / 2;
+        const ry = s.py - ph / 2;
+        const rr = ph / 2;
 
-    ctx.globalAlpha = opa;
+        ctx.globalAlpha = opa;
 
-    rrect(ctx, rx, ry, pw, ph, rr);
+        rrect(ctx, rx, ry, pw, ph, rr);
 
-    const [rv, gv, bv] = hexRgb(s.color);
+        const [rv, gv, bv] = hexRgb(s.color);
 
-    ctx.fillStyle = `rgba(${rv},${gv},${bv},0.1)`;
-    ctx.fill();
+        ctx.fillStyle = `rgba(${rv},${gv},${bv},0.1)`;
+        ctx.fill();
 
-    ctx.strokeStyle = `rgba(${rv},${gv},${bv},0.45)`;
-    ctx.lineWidth = 0.7;
-    ctx.stroke();
+        ctx.strokeStyle = `rgba(${rv},${gv},${bv},0.45)`;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
 
-    let textStartX = rx + pad;
+        let textStartX = rx + pad;
 
-    if (hasIcon) {
-      ctx.drawImage(
-        iconImg,
-        rx + pad,
-        s.py - iconSize / 2,
-        iconSize,
-        iconSize
-      );
+        if (hasIcon) {
+          ctx.drawImage(
+            iconImg,
+            rx + pad,
+            s.py - iconSize / 2,
+            iconSize,
+            iconSize
+          );
 
-      textStartX =
-        rx + pad + iconSize + gap;
+          textStartX =
+            rx + pad + iconSize + gap;
+        }
+
+        ctx.fillStyle = "#fff";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "middle";
+
+        ctx.fillText(
+          s.name,
+          textStartX,
+          s.py
+        );
+
+        ctx.globalAlpha = 1;
+      });
+
+      if (!st.drag) {
+        st.rotY += 0.003;
+      }
+
+      rafId = requestAnimationFrame(draw);
     }
-
-    ctx.fillStyle = "#fff";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "middle";
-
-    ctx.fillText(
-      s.name,
-      textStartX,
-      s.py
-    );
-
-    ctx.globalAlpha = 1;
-  });
-
-  if (!st.drag) {
-    st.rotY += 0.003;
-  }
-
-  rafId = requestAnimationFrame(draw);
-}
 
     draw();
 
@@ -303,24 +303,24 @@ function draw() {
   // ── JSX ──────────────────────────────────────────────────────────────────
   return (
     <section className="sg-section" id="skills">
-<title>Dharmapal | Skills</title>
+      <title>Dharmapal | Skills</title>
 
-          <ColorBends
-            colors={["#1b1b1bff", "#000000ff"]}
-            rotation={73}
-            speed={0.4}
-            scale={1}
-            frequency={1}
-            warpStrength={1}
-            mouseInfluence={0.75}
-            noise={0}
-            parallax={0.5}
-            iterations={1}
-            intensity={1.5}
-            bandWidth={4.5}
-            transparent
-            autoRotate={0}
-            />
+      <ColorBends
+        colors={["#1b1b1bff", "#000000ff"]}
+        rotation={73}
+        speed={0.4}
+        scale={1}
+        frequency={1}
+        warpStrength={1}
+        mouseInfluence={0.75}
+        noise={0}
+        parallax={0.5}
+        iterations={1}
+        intensity={1.5}
+        bandWidth={4.5}
+        transparent
+        autoRotate={0}
+      />
 
       <h2 className="sg-heading">Technical Expertise</h2>
 
@@ -343,7 +343,7 @@ function draw() {
         </div>
         <p className="sg-panel-desc" ref={panelDescRef} />
         <div className="sg-pills" ref={pillsRef} />
-       
+
       </div>
     </section>
   );

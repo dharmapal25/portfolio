@@ -70,7 +70,7 @@
   width: 18px;
   height: 18px;
   top: 6px;
-  box-shadow: 0 0 0 6px rgba(100, 200, 255, 0.2);
+  box-shadow: 0 0 0 6px #64c8ff33;
 }
 
 .timeline__content {
@@ -80,12 +80,13 @@
   padding: 24px;
   transition: all 0.3s ease;
   width: calc(80% - 30px);
+  border-radius: 10px;
 }
 
 .timeline__item:hover .timeline__content {
   border-color: var(--accent);
-  background: rgba(100, 200, 255, 0.05);
-  box-shadow: 0 4px 20px rgba(100, 200, 255, 0.1);
+  background: #64c8ff0d;
+  box-shadow: 0 4px 20px #64c8ff1a;
 }
 
 .timeline__header {

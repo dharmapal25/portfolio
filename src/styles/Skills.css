@@ -1,7 +1,7 @@
 .sg-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   padding: 80px 24px 60px;
   max-width: var(--max-width);
   margin: 0 auto;
@@ -19,9 +19,9 @@
   font-family: var(--font-display);
   font-size: clamp(28px, 5vw, 40px);
   font-weight: 400;
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  line-height: 1.15;
+  color: var(--accent);
+  /* margin-bottom: 20px; */
+  line-height: 2.15;
 }
 
 .sg-canvas {

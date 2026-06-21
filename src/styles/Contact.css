@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
   animation: fadeUp 0.7s ease both;
 }
 
@@ -20,6 +20,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  
 }
 
 .contact__heading {
@@ -41,6 +42,8 @@
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+
 }
 
 .contact__email-btn {

@@ -6,13 +6,11 @@ import {
   SiMysql, SiRedis, SiPython, SiDocker, SiGit,
   SiNumpy, SiLinux,
   SiVercel,
-  SiPandas,
-  SiApifox,
+  SiPandas
 } from "react-icons/si";
 import { TbApi, TbBrandThreejs } from "react-icons/tb";
 import { BiData } from "react-icons/bi";
 import "../styles/Skills.css";
-import { CgVercel } from "react-icons/cg";
 import ColorBends from "./ColorBends";
 
 

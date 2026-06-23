@@ -1,7 +1,7 @@
 .sg-section {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
   padding: 80px 24px 60px;
   max-width: var(--max-width);
   margin: 0 auto;
@@ -21,6 +21,7 @@
   font-weight: 600;
   color: var(--accent);
   /* margin-bottom: 20px; */
+  /* align-items: start; */
   line-height: 2.15;
 }
 

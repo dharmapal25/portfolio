@@ -325,7 +325,8 @@ export default function SkillsGlobe() {
       <h2 className="sg-heading">Technical Expertise</h2>
 
       {/* ↓↓ GLOBE SIZE — change width & height here ↓↓ */}
-      <canvas ref={canvasRef} className="sg-canvas" width={850} height={620} />
+      {/* <canvas ref={canvasRef} className="sg-canvas" width={850} height={620} /> */}
+      <canvas ref={canvasRef} className="sg-canvas" width={800} height={600} />
       <p className="sg-drag-hint">⊕ Drag to rotate</p>
 
       <div className="sg-tabs">

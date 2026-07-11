@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/Timeline.css';
 import { Link } from 'react-router-dom';
 import { GoLinkExternal } from 'react-icons/go';
+import { BiLinkExternal } from 'react-icons/bi';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +15,7 @@ const timelineData = [
     company: 'Eyesec Cyber Security Solutions Pvt. Ltd."',
     period: 'Dec 2024 – Apr 2025',
     description: 'Completed 640 hours (16 weeks) of internship on Cyber Security. Worked on real-world security concepts as per DTE, Bengaluru guidelines.',
-    link : "http://localhost:1573/"
+    link: "https://ik.imagekit.io/cblndrocc/Dharmapal%20achiv/Eyesec%20cyber%20security.pdf"
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const timelineData = [
     company: 'DevXcel 2024-25 | Shri Vasantrao Potdar Polytechnic',
     period: 'March 2025',
     description: 'Secured 1st place in Bug Hunt event at National Level Technical Fest organized by Dept. of CSE, Belagavi.',
+    link: "https://ik.imagekit.io/cblndrocc/Dharmapal%20achiv/1st.jpg"
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const timelineData = [
     company: 'Technovision-24 | Hirasugar Institute of Technology',
     period: 'April 2024',
     description: 'Participated in Project Exhibition / Idea Presentation competition and secured a prize at the national level fest.',
+    link: "https://ik.imagekit.io/cblndrocc/Dharmapal%20achiv/2nd.jpg"
 
   },
   {
@@ -37,6 +40,7 @@ const timelineData = [
     company: 'India Innovates 2026 | Bharat Mandapam, New Delhi"',
     period: 'March 2026',
     description: 'Selected as a finalist in the prestigious India Innovates Hackathon, showcasing innovative solutions to national challenges at Bharat Mandapam, New Delhi.',
+
   },
 ];
 
@@ -94,7 +98,7 @@ export default function Timeline() {
                 </div>
                 <span className="timeline__period">{item.period}</span>
                 <p className="timeline__description">{item.description}</p>
-                <Link className='timeline__link' > <GoLinkExternal style={{fontWeight : "bold"}} /> </Link>
+                <Link className='timeline__link' to={item.link} > <BiLinkExternal style={{ fontWeight: "bold" }} /> </Link>
               </div>
             </div>
           ))}

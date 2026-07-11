@@ -54,7 +54,7 @@ const Projects = () => {
     <>
       <div className="main-container">
 
-<title>Dharmapal | Projects</title>
+        <title>Dharmapal | Projects</title>
 
         <section className="projects-section" id="projects">
 
@@ -77,9 +77,9 @@ const Projects = () => {
           />
           <div className="projects-header">
             <h2>Featured Projects</h2>
-            <p>
-              Full Stack, AI, Real-Time Applications and Data Engineering Projects.
-            </p>
+            {/* <p>
+              Full Stack, AI and Real-Time Applications.
+            </p> */}
           </div>
 
           <div className="projects-grid">
@@ -124,7 +124,7 @@ const Projects = () => {
                     <hr />
                     <div
                       className="project-links"
-                      // data-atropos-offset="1"
+                    // data-atropos-offset="1"
                     >
 
                       <a

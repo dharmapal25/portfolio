@@ -12,22 +12,22 @@ export default function Contact() {
 
   return (
     <section className="contact">
-                <ColorBends
-                  colors={["#1b1b1bff", "#000000ff"]}
-                  rotation={73}
-                  speed={0.4}
-                  scale={1}
-                  frequency={1}
-                  warpStrength={1}
-                  mouseInfluence={0.75}
-                  noise={0}
-                  parallax={0.5}
-                  iterations={1}
-                  intensity={1.5}
-                  bandWidth={4.5}
-                  transparent
-                  autoRotate={0}
-                  />
+      <ColorBends
+        colors={["#1b1b1bff", "#000000ff"]}
+        rotation={73}
+        speed={0.4}
+        scale={1}
+        frequency={1}
+        warpStrength={1}
+        mouseInfluence={0.75}
+        noise={0}
+        parallax={0.5}
+        iterations={1}
+        intensity={1.5}
+        bandWidth={4.5}
+        transparent
+        autoRotate={0}
+      />
       <title>Contact Us</title>
       <div className="container">
         <div className="contact__inner">

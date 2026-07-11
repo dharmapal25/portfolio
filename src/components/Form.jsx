@@ -6,8 +6,8 @@ import { CgClose } from "react-icons/cg"
 import { BsFillSendFill, BsSendArrowUpFill } from "react-icons/bs"
 import { AiOutlineClose } from "react-icons/ai"
 
-const SERVICE_ID  = "service_grfi6k7"  
-const TEMPLATE_ID = "template_h3s1kgn"  
+const SERVICE_ID  = "service_83h1qfk"  
+const TEMPLATE_ID = "template_lb2jrdi"  
 const PUBLIC_KEY  = "gqfGnUyAddq_cb_0m"  
 
 const Form = ({ isOpen, onClose }) => {

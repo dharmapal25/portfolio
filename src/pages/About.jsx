@@ -1,6 +1,6 @@
 import '../styles/About.css'
 import '../pages/App.css'
-import photo from "../../public/assets/photo.jpg"
+import photo from "../../public/assets/Jod.png"
 import Timeline from '../components/Timeline'
 import ColorBends from './ColorBends'
 const facts = [
@@ -14,6 +14,7 @@ export default function About() {
   return (
     <section className="about">
       <title>Dharmapal | About</title>
+      
           <ColorBends
             colors={["#1b1b1bff", "#000000ff"]}
             rotation={73}

@@ -41,6 +41,10 @@
   position: relative;
 }
 
+.timeline__link {
+  font-size: 17px;
+}
+
 .timeline__item--left {
   justify-content: flex-end;
   padding-right: calc(50% + 30px);

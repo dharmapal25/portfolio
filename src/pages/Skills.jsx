@@ -14,7 +14,7 @@ import "../styles/Skills.css";
 import ColorBends from "./ColorBends";
 
 
-// ── 1. SKILLS DATA ──────────────────────────────────────────────────────────
+// ── SKILLS DATA 
 const SKILLS = [
   { name: "Tailwind CSS", cat: "frontend", color: "#06B6D4", Icon: SiTailwindcss },
   { name: "React", cat: "frontend", color: "#61DAFB", Icon: SiReact },
@@ -54,7 +54,7 @@ const INFO = {
   tools: { title: "Tools & Languages", desc: "Dev tools, scripting, containerization, and data science libraries." },
 };
 
-// ── 2. HELPERS ───────────────────────────────────────────────────────────────
+// ── HELPERS 
 function fibSphere(n) {
   const pts = [], phi = Math.PI * (3 - Math.sqrt(5));
   for (let i = 0; i < n; i++) {
@@ -77,7 +77,7 @@ function rrect(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
-// ── 3. COMPONENT ─────────────────────────────────────────────────────────────
+// ── COMPONENT 
 export default function SkillsGlobe() {
   const canvasRef = useRef(null);
   const stateRef = useRef({ rotX: 0.3, rotY: 0, drag: false, lmx: 0, lmy: 0 });

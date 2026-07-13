@@ -5,37 +5,63 @@ import { BiSend } from "react-icons/bi"
 import { CgClose } from "react-icons/cg"
 import { BsFillSendFill, BsSendArrowUpFill } from "react-icons/bs"
 import { AiOutlineClose } from "react-icons/ai"
+import axios from "axios"
 
 // const SERVICE_ID  = "service_mvw7xmd"  
 // const TEMPLATE_ID = "template_k1vhqq7"  
 // const PUBLIC_KEY  = "ksB79qmU9rNmAFFgY"  
 
-const SERVICE_ID  = "service_wx2k95d"  
-const TEMPLATE_ID = "template_lb2jrdi"  
-const PUBLIC_KEY  = "uuMpXSO4AHtEJBAgU"  
+// const SERVICE_ID  = "service_wx2k95d"  
+// const TEMPLATE_ID = "template_lb2jrdi"  
+// const PUBLIC_KEY  = "uuMpXSO4AHtEJBAgU"  
 
 const Form = ({ isOpen, onClose }) => {
     const formRef = useRef()
     const [status, setStatus] = useState(null) 
+    const [formData, setFormData] = useState({
+    from_email: "",
+    from_role: "",
+    message: "",
+});
 
     if (!isOpen) return null
 
 const handleSubmit = (e) => {
     e.preventDefault()
-    setStatus("sending")
+    // setStatus("sending")
+    e.preventDefault();
 
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
-        publicKey: PUBLIC_KEY,
-    })
-    .then(() => {
+    const data = Object.fromEntries(new FormData(e.target));
+    setFormData(data);
+    console.log(data);
+
+    axios.post("http://localhost:5000/send-msg",{data})
+    .then((res)=> {
+        console.log( "Response : ",res)
+        
         setStatus("success")
         formRef.current.reset()
         setTimeout(onClose, 2000)
+
+
     })
-    .catch((err) => {
-        console.error("EmailJS error:", err)
-        setStatus("error")
-    })
+    .catch((err)=>{
+         console.log("Error : ", err )
+         setStatus("error")
+})
+
+    // emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
+    //     publicKey: PUBLIC_KEY,
+    // })
+    // .then(() => {
+    //     setStatus("success")
+    //     formRef.current.reset()
+    //     setTimeout(onClose, 2000)
+    // })
+    // .catch((err) => {
+    //     console.error("EmailJS error:", err)
+    //     setStatus("error")
+    // })
 }
 
     return (
@@ -48,10 +74,6 @@ const handleSubmit = (e) => {
                         <h2 className="form-title">Let's <span>Connect</span></h2>
                     </div>
                     <button className="form-close" onClick={onClose} aria-label="Close">
-                        {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg> */}
                         <AiOutlineClose/>
                     </button>
                 </div>

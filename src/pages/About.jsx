@@ -1,5 +1,5 @@
 import '../styles/About.css'
-import '../pages/App.css'
+import '../styles/App.css'
 import photo from "../../public/assets/Jod.png"
 import Timeline from '../components/Timeline'
 import ColorBends from './ColorBends'

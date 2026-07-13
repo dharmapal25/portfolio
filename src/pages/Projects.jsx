@@ -1,13 +1,15 @@
 import React from "react";
-import "../styles/Projects.css";
-import pro from "../../public/pro.png";
+import Atropos from "atropos/react";
+import ColorBends from "./ColorBends";
+
+import { BsGithub } from "react-icons/bs";
+import { BiLinkExternal } from "react-icons/bi";
+
 import ChatRoom from "../../public/image.png";
 import os from "../../public/os.png";
 import FlashGPT from "../../public/FlashGPT.png";
-import { BsGithub } from "react-icons/bs";
-import { BiLinkExternal } from "react-icons/bi";
-import Atropos from "atropos/react";
-import ColorBends from "./ColorBends";
+import pro from "../../public/pro.png";
+import "../styles/Projects.css";
 
 const Projects = () => {
   const projects = [

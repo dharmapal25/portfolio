@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import Lenis from "lenis";
-import "./pages/App.css"
+import "./styles/App.css"
 
 const lenis = new Lenis({
-  duration: 2.2,      // jitna zyada, utna smooth
+  duration: 2.2,     // smooth
   lerp: 0.9,         // lower = smoother
   smoothWheel: true,
   wheelMultiplier: 0.8,

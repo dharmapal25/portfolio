@@ -5,21 +5,10 @@
 }
 
 .form-overlay {
-  position: fixed;
-  /* width: 1000px; */
   width: 100%;
-  inset: 0;
-  background: #080608;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
-  padding: 20px;
-  animation: fadeIn 0.2s ease;
-  /* backdrop-filter: blur(50px); */
-  
 }
 
 .form-modal {
@@ -27,36 +16,26 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     width: 100%;
-    max-width: 460px;
-    /* max-width: 100%; */
+    max-width: 100%; /* Forms expands to width of wrapper */
     padding: 32px;
     position: relative;
     box-shadow:
     0 0 0 1px #fa855b14,
     0 24px 60px #00000099,
     0 0 40px #fa855b0d;
-    animation: slideUp 0.28s cubic-bezier(0.34, 1.36, 0.64, 1);
     backdrop-filter: blur(5px);
 }
 
-@keyframes slideUp {
-    from {
-    opacity: 0;
-    transition: 1s;
-    transform: translateY(-102px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* ─── Modal Header ────────────────────────────────── */
+/* ─── Modal Header ──────────────── */
 .form-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.form-header .form-close {
+  display: none;
 }
 
 .form-label {
@@ -82,37 +61,12 @@
   color: var(--accent);
 }
 
-.form-close {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: var(--transition);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.form-close:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-dim);
-  box-shadow: 0 0 12px rgba(250, 133, 91, 0.15);
-}
-
-/* ─── Divider ─────────────────────────────────────── */
 .form-divider {
   height: 1px;
   background: var(--border);
   margin-bottom: 24px;
 }
 
-/* ─── Form Body ───────────────────────────────────── */
 .form-body {
   display: flex;
   flex-direction: column;
@@ -137,7 +91,6 @@
   text-transform: uppercase;
 }
 
-/* ─── Input Wrapper ───────────────────────────────── */
 .input-wrapper {
   position: relative;
   display: flex;
@@ -156,7 +109,7 @@
   color: var(--accent);
 }
 
-/* ─── Inputs & Textarea ───────────────────────────── */
+/* ─── Inputs & Textarea ──────── */
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -194,7 +147,7 @@
   box-shadow: 0 0 0 3px rgba(250, 133, 91, 0.07);
 }
 
-/* ─── Submit Button ───────────────────────────────── */
+/* ─── Submit Button ─────── */
 .form-submit {
   width: 100%;
   justify-content: center;

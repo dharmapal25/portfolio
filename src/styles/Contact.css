@@ -3,14 +3,31 @@
   padding: 100px 0;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
-.contact__inner {
+/* New Layout wrapper for Left-Right Split */
+.contact__layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
   width: 100%;
-  max-width: 640px;
+  max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
   animation: fadeUp 0.7s ease both;
+}
+
+/* Left Content Styles */
+.contact__content {
+  flex: 1;
+  text-align: left; 
+}
+
+.contact__form-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: 480px;
 }
 
 .contact__overline {
@@ -20,18 +37,16 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 16px;
-
 }
 
 .contact__heading {
   font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: clamp(32px, 4.5vw, 52px);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 36px;
+  margin-bottom: 24px;
   line-height: 1.15;
   text-align: start;
-
 }
 
 .contact__heading span {
@@ -43,42 +58,13 @@
   color: var(--text-secondary);
   line-height: 1.85;
   margin-bottom: 44px;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-
-}
-
-.contact__email-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 30px;
-  border: none;
-  background: linear-gradient(96.76deg, #e8602e 5.3%, #340e00 234.66%) right center / 150% 100% border-box padding-box, border-box;
-  font-size: 14px;
-  color: var(--text-primary);
-  transition: 1s ease-in-out;
-  transition: background-position 300ms, box-shadow 300ms;
-  font-family: var(--font-display);
-  font-weight: 300;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: var(--transition);
-  border-bottom: 1px solid var(--text-primary);
-  border-right: 1px solid var(--text-primary);
-  margin-bottom: 30px;
-}
-
-.contact__email-btn:hover {
-  box-shadow: 0 0 32px var(--accent-glow);
-  transform: translateY(-3px);
+  max-width: 520px;
+  text-align: left; /* Centered to Left alignment */
 }
 
 .contact__social {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from center to left */
   align-items: center;
   gap: 28px;
   margin-bottom: 40px;
@@ -118,7 +104,7 @@
   font-family: var(--font-display);
   font-size: 12px;
   color: var(--text-muted);
-  margin-top: 16px;
+  margin-top: 32px;
   letter-spacing: 0.5px;
 }
 
@@ -129,4 +115,37 @@
 
 .contact__footer a:hover {
   opacity: 0.75;
+}
+
+/* ─── Responsive Media Queries ───────────────────────── */
+@media (max-width: 968px) {
+  .contact__layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    text-align: center;
+  }
+  
+  .contact__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact__heading {
+    text-align: center;
+  }
+
+  .contact__body {
+    text-align: center;
+  }
+
+  .contact__social {
+    justify-content: center;
+  }
+  
+  .contact__form-wrapper {
+    max-width: 100%;
+  }
 }

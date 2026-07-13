@@ -15,7 +15,7 @@ const Form = ({ isOpen, onClose }) => {
         const targetForm = e.target;
         const data = Object.fromEntries(new FormData(targetForm));
 
-        axios.post("http://localhost:5000/send-msg", {
+        axios.post(`${import.meta.env.REACT_API_URL}/send-msg`, {
             email: data.from_email,
             role: data.from_role,
             message: data.message

@@ -7,6 +7,14 @@
   user-select: none;
 }
 
+
+@font-face {
+  src: url("/public/fonts/LobsterTwo-BoldItalic.ttf") format("ttf");
+  font-family: 'LobsterTwo';
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --bg-primary: #090e1a;
   --bg-surface: #0f1729;
@@ -22,6 +30,7 @@
   --accent-dim: #ffc8b411;
   --accent-glow: #64ffda26;
 
+  --font-tag : 'LobsterTwo';
   --font-display: "Share Tech", sans-serif;
   --font-body: 'DM Sans', sans-serif;
 

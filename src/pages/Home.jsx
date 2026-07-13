@@ -27,7 +27,7 @@ export default function Home() {
           Turning Ideas Into Production -Ready{' '}
           <span className="web-tag">
             <span className="web-tag__bracket">&lt;</span>
-            <span className="web-tag__text"><i>Web</i></span>
+            <span className="web-tag__text">Web</span>
             <span className="web-tag__bracket">/&gt;</span>
           </span>{' '}
           Applications.<span className="cursor">_</span>

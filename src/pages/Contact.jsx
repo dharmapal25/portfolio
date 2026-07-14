@@ -75,7 +75,7 @@ export default function Contact() {
             </p>
           </div>
           <div className="contact__form-wrapper">
-            <Form isOpen={true} onClose={() => {}} isEmbedded={true} />
+            <Form />
           </div>
 
         </div>

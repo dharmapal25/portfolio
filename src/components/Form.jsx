@@ -1,52 +1,71 @@
-import { useState } from "react";
-import "../styles/Form.css";
-import {  BsFillSendFill, BsXLg } from "react-icons/bs";
 import axios from "axios";
+import { useState } from "react";
 
-const Form = ({ isOpen, onClose }) => {
-    const [status, setStatus] = useState(null); // states: null, "sending", "success", "error"
+import { BsFillSendFill } from "react-icons/bs";
 
-    if (!isOpen) return null;
+import "../styles/Form.css";
+
+const Form = () => {
+    // states: null, "sending", "success", "error", "limit_reached"
+    const [status, setStatus] = useState(null);
+
+    const [count, setCount] = useState(() => {
+        const savedCount = localStorage.getItem("count");
+        return savedCount ? parseInt(savedCount, 10) : 0;
+    });
+
+    const apiUrl = import.meta.env.VITE_API_URL;
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // (Max 2 allowed)
+        if (count >= 2) {
+            setStatus("limit_reached");
+            return;
+        }
+
         setStatus("sending");
 
         const targetForm = e.target;
-        const data = Object.fromEntries(new FormData(targetForm));
+        const data = Object.fromEntries(new FormData(targetForm))
 
-        axios.post(`${import.meta.env.REACT_API_URL}/send-msg`, {
+        axios.post(`${apiUrl}/send-msg`, {
             email: data.from_email,
             role: data.from_role,
             message: data.message
         })
-        .then(() => {
-            setStatus("success");
-            targetForm.reset(); // Clear form fields on success
-            
-            setTimeout(() => {
-                onClose();
-                setStatus(null);
-            }, 2000);
-        })
-        .catch((err) => {
-            console.error("Error sending message:", err);
-            setStatus("error");
-           
-        });
+            .then((res) => {
+                console.log(res)
+                setStatus("success");
+                targetForm.reset();
+
+                setTimeout(() => {
+                    setStatus(null);
+                }, 2000);
+
+                const newCount = count + 1;
+                setCount(newCount);
+                localStorage.setItem("count", newCount);
+
+            })
+            .catch((err) => {
+                console.error("Error sending message:", err);
+                setStatus("error");
+            });
     };
 
+    // Check if maximum limit has already reached
+    const isLimitExceeded = count >= 2;
+
     return (
-        <div className="form-overlay" onClick={onClose}>
+        <div className="form-overlay" >
             <div className="form-modal" onClick={(e) => e.stopPropagation()}>
 
                 <div className="form-header">
                     <div>
                         <h2 className="form-title">Let's <span>Connect</span></h2>
                     </div>
-                    <button className="form-close" onClick={onClose} aria-label="Close">
-                        <BsXLg/>
-                    </button>
                 </div>
 
                 <div className="form-divider" />
@@ -60,13 +79,13 @@ const Form = ({ isOpen, onClose }) => {
                                 <rect x="2" y="4" width="20" height="16" rx="2" />
                                 <path d="M2 7l10 7 10-7" />
                             </svg>
-                            <input 
-                                type="email" 
-                                placeholder="your@email.com" 
-                                id="email" 
-                                name="from_email" 
-                                required 
-                                disabled={status === "sending"}
+                            <input
+                                type="email"
+                                placeholder="your@email.com"
+                                id="email"
+                                name="from_email"
+                                required
+                                disabled={status === "sending" || isLimitExceeded}
                             />
                         </div>
                     </div>
@@ -78,26 +97,26 @@ const Form = ({ isOpen, onClose }) => {
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />
                             </svg>
-                            <input 
-                                type="text" 
-                                placeholder="Designer / Developer" 
-                                id="role" 
-                                name="from_role" 
-                                required 
-                                disabled={status === "sending"}
+                            <input
+                                type="text"
+                                placeholder="Designer / Developer"
+                                id="role"
+                                name="from_role"
+                                required
+                                disabled={status === "sending" || isLimitExceeded}
                             />
                         </div>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="message" className="field-label">Message</label>
-                        <textarea 
-                            placeholder="What's on your mind..." 
-                            id="message" 
-                            name="message" 
-                            rows="4" 
-                            required 
-                            disabled={status === "sending"}
+                        <textarea
+                            placeholder="What's on your mind..."
+                            id="message"
+                            name="message"
+                            rows="4"
+                            required
+                            disabled={status === "sending" || isLimitExceeded}
                         />
                     </div>
 
@@ -112,11 +131,17 @@ const Form = ({ isOpen, onClose }) => {
                             Message sent! Closing...
                         </p>
                     )}
+                    {/* Max Limit reached notification indicator */}
+                    {(status === "limit_reached" || isLimitExceeded) && (
+                        <p style={{ color: "crimson", fontSize: "13px", margin: "0", fontWeight: "500" }}>
+                            Today max limit have completed
+                        </p>
+                    )}
 
                     <button
                         type="submit"
                         className="btn-primary form-submit"
-                        disabled={status === "sending" || status === "success"}
+                        disabled={status === "sending" || status === "success" || isLimitExceeded}
                     >
                         {status === "sending" ? "Sending..." : "Send Message"}
                         <BsFillSendFill style={{ marginLeft: "8px" }} />

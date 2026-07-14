@@ -23,7 +23,7 @@ app.post("/send-msg", async (req, res) => {
 
     const { email, role, message } = req.body
 
-    let emailData = await transport.sendMail({
+    let emailData = transport.sendMail({
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER,
       subject: "new message",

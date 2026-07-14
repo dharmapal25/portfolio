@@ -14,7 +14,8 @@ const Form = () => {
         return savedCount ? parseInt(savedCount, 10) : 0;
     });
 
-    const apiUrl = import.meta.env.VITE_API_URL;
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+    console.log(apiUrl)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,7 +30,7 @@ const Form = () => {
 
         const targetForm = e.target;
         const data = Object.fromEntries(new FormData(targetForm))
-
+        console.log(' >>> ',data)
         axios.post(`${apiUrl}/send-msg`, {
             email: data.from_email,
             role: data.from_role,

@@ -4,9 +4,8 @@ const cors = require("cors");
 require("dotenv").config();
 const app = express();
 
-app.use(cors({
-    origin: process.env.FRONTEND_APP_URL
-}));
+app.use(cors());
+
 app.use(express.json());
 
 const transport = nodemailer.createTransport({
@@ -28,46 +27,33 @@ app.post("/send-msg", async (req, res) => {
       to: process.env.GMAIL_USER,
       subject: "new message",
       html:
-        `<div style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; background-color: #1a1e21; color: #e2e8f0; padding: 30px; border-radius: 8px; max-width: 600px; margin: 0 auto; border: 1px solid #2d3748;">
-  
-  <!-- Header with Light Green Accent -->
-  <div style="border-bottom: 2px solid #4ade80; padding-bottom: 15px; margin-bottom: 25px;">
-    <h2 style="color: #ffffff; margin: 0; font-size: 22px; letter-spacing: 0.5px;">
-      ⚡ Flash<span style="color: #4ade80;">dev</span> Portfolio Connection
-    </h2>
-    <p style="color: #a0aec0; margin: 5px 0 0 0; font-size: 14px;">A recruiter has submitted a message via your contact form.</p>
-  </div>
+        `    <section style="max-width: 550px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 6px;">
 
-  <!-- Content Section (Light Dark Box) -->
-  <div style="background-color: #2d3748; padding: 20px; border-radius: 6px; border-left: 4px solid #4ade80; margin-bottom: 25px;">
-    
-    <!-- Sender Email -->
-    <div style="margin-bottom: 15px;">
-      <strong style="color: #4ade80; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 6px;">Sender Email</strong>
-      <div style="background-color: #ebf4ff; color: #1a202c; padding: 10px 12px; border-radius: 4px; font-size: 15px; font-weight: 500;">
-        <a href="mailto:${email}" style="color: #1a202c; text-decoration: none;">${email}</a>
-      </div>
-    </div>
+        <h2
+            style="margin-top: 0; margin-bottom: 24px; font-size: 20px; font-weight: 600; color: #111111; border-bottom: 1px solid #eeeeee; padding-bottom: 12px;">
+            New Submission Details
+        </h2>
 
-    <!-- Recruiter Role -->
-    <div style="margin-bottom: 15px;">
-      <strong style="color: #4ade80; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 6px;">Proposed Role / Message Hook</strong>
-      <div style="background-color: #ebf4ff; color: #1a202c; padding: 10px 12px; border-radius: 4px; font-size: 15px; font-weight: 500;">
-        ${role}
-      </div>
-    </div>
+        <div style="margin-bottom: 20px;">
+            <span
+                style="display: block; font-size: 12px; text-transform: uppercase; color: #777777; font-weight: bold; margin-bottom: 4px;">Email</span>
+            <a href="mailto:${email}" style="font-size: 15px; color: #0066cc; text-decoration: none;">${email}</a>
+        </div>
 
-    <!-- Message Content -->
-    <div style="margin-bottom: 5px;">
-      <strong style="color: #4ade80; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 6px;">Message Body</strong>
-      <div style="color: #e2e8f0; font-size: 15px; line-height: 1.6; white-space: pre-wrap; background-color: #1a1e21; padding: 15px; border-radius: 4px; border: 1px solid #4a5568;">
-        ${message}
-      </div>
-    </div>
+        <div style="margin-bottom: 20px;">
+            <span
+                style="display: block; font-size: 12px; text-transform: uppercase; color: #777777; font-weight: bold; margin-bottom: 4px;">Role</span>
+            <p style="margin: 0; font-size: 15px; color: #222222;">${role}</p> 
+        </div>
 
-  </div>
+        <div style="margin-bottom: 10px;">
+            <span
+                style="display: block; font-size: 12px; text-transform: uppercase; color: #777777; font-weight: bold; margin-bottom: 6px;">Message</span>
+            <p style="margin: 0; font-size: 15px; color: #444444; background-color: #f9f9f9; padding: 12px; border-radius: 4px; border-left: 3px solid #dddddd; white-space: pre-wrap;">${message}</p> 
+        </div>
 
-  <!-- Action Button (Light Green UI element) -->
+    </section>
+
   <div style="text-align: center; margin-bottom: 20px;">
     <a href="mailto:${email}?subject=Regarding your message on my Portfolio" 
        style="background-color: #4ade80; color: #12151a; text-decoration: none; padding: 12px 28px; font-weight: bold; border-radius: 4px; display: inline-block; font-size: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
@@ -75,6 +61,7 @@ app.post("/send-msg", async (req, res) => {
     </a>
   </div>`
     })
+    console.log(emailData)
 
     res.json({
       data: emailData,

@@ -5,23 +5,23 @@ require("dotenv").config();
 const app = express();
 
 app.use(cors({
-  origin : process.env.FRONTEND_APP_URL,
+  origin: process.env.FRONTEND_APP_URL || 'http://localhost:5173',
   methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"]
+  allowedHeaders: ["Content-Type"]
 }));
 
 app.use(express.json());
 
 const transport = nodemailer.createTransport({
-  host: "smtp.gmail.com",      
-  port: 587,                    
-  secure: false,                 
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.GMAIL_USER,
     pass: process.env.GMAIL_APP_PASSWORD
   },
   tls: {
-    rejectUnauthorized: false   
+    rejectUnauthorized: false
   }
 });
 
@@ -111,7 +111,7 @@ app.post("/send-msg", async (req, res) => {
   </div>`
     })
       .then((info) => {
-        console.log("Email sent successfully in background:", info.messageId);
+        console.log("Email sent successfully in background:", info);
       })
       .catch((err) => {
         console.error("Background Email Error:", err);
@@ -125,9 +125,10 @@ app.post("/send-msg", async (req, res) => {
 
 
   } catch (err) {
-    res.json({
-      message: "Some thing went wrong",
-    })
+    console.error("Main Route Error:", err);
+    if (!res.headersSent) {
+      res.status(500).json({ success: false, error: err.message });
+    }
   }
 })
 

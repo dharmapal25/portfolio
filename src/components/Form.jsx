@@ -1,4 +1,4 @@
-import axios from "axios";
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 
 import { BsFillSendFill } from "react-icons/bs";
@@ -14,9 +14,10 @@ const Form = () => {
         return savedCount ? parseInt(savedCount, 10) : 0;
     });
 
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
-    console.log(apiUrl)
-
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+console.log("IDs:", SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -29,15 +30,11 @@ const Form = () => {
         setStatus("sending");
 
         const targetForm = e.target;
-        const data = Object.fromEntries(new FormData(targetForm))
-        console.log(' >>> ',data)
-        axios.post(`${apiUrl}/send-msg`, {
-            email: data.from_email,
-            role: data.from_role,
-            message: data.message
-        })
+
+        emailjs
+            .sendForm(SERVICE_ID, TEMPLATE_ID, targetForm, PUBLIC_KEY)
             .then((res) => {
-                console.log(res)
+                console.log(res);
                 setStatus("success");
                 targetForm.reset();
 
@@ -48,7 +45,6 @@ const Form = () => {
                 const newCount = count + 1;
                 setCount(newCount);
                 localStorage.setItem("count", newCount);
-
             })
             .catch((err) => {
                 console.error("Error sending message:", err);

@@ -17,7 +17,6 @@ const Form = () => {
     const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-console.log("IDs:", SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -34,7 +33,6 @@ console.log("IDs:", SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
         emailjs
             .sendForm(SERVICE_ID, TEMPLATE_ID, targetForm, PUBLIC_KEY)
             .then((res) => {
-                console.log(res);
                 setStatus("success");
                 targetForm.reset();
 

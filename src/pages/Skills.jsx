@@ -6,7 +6,10 @@ import {
   SiMysql, SiRedis, SiPython, SiDocker, SiGit,
   SiNumpy, SiLinux,
   SiVercel,
-  SiPandas
+  SiPandas,
+  SiTypescript,
+  SiGithub,
+  SiRender
 } from "react-icons/si";
 import { TbApi, TbBrandThreejs } from "react-icons/tb";
 import { BiData } from "react-icons/bi";
@@ -33,9 +36,9 @@ const SKILLS = [
   { name: "Docker", cat: "tools", color: "#2496ED", Icon: SiDocker },
   { name: "Vercel", cat: "tools", color: "#ffffffff", Icon: SiVercel },
   { name: "Git", cat: "tools", color: "#F05032", Icon: SiGit },
-  { name: "NumPy", cat: "tools", color: "#4DABCF", Icon: SiNumpy },
-  { name: "Linux", cat: "tools", color: "#b6b6b6ff", Icon: SiLinux },
-  { name: "Pandas", cat: "tools", color: "#a1a9aaff", Icon: SiPandas },
+  { name: "GitHub", cat: "tools", color: "#eef1f1", Icon: SiGithub },
+  { name: "TypeScript", cat: "tools", color: "#2757bd", Icon: SiTypescript },
+  { name: "Render", cat: "tools", color: "#a1a9aaff", Icon: SiRender },
 ];
 
 const TABS = [

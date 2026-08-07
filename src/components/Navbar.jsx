@@ -53,7 +53,7 @@ export default function Navbar() {
         </ul>
 
         <a
-          href="https://ik.imagekit.io/cblndrocc/main-dharmapal-resume.pdf"
+          href="/Dharmapal_Resume.pdf"
           className="navbar__resume"
           target="_blank"
           rel="noopener noreferrer"
@@ -62,7 +62,6 @@ export default function Navbar() {
         </a>
 
 
-        {/* HAMBURGER */}
         <button
           className={`navbar__hamburger ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(prev => !prev)}
@@ -80,7 +79,7 @@ export default function Navbar() {
           </NavLink>
         ))}
         <a
-          href="/resume.pdf"
+          href="/Dharmapal_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: 'var(--accent)' }}

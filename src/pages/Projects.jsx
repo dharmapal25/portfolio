@@ -5,49 +5,59 @@ import ColorBends from "./ColorBends";
 import { BsGithub } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";
 
-import ChatRoom from "../../public/image.png";
-import os from "../../public/os.png";
-import FlashGPT from "../../public/FlashGPT.png";
-import pro from "../../public/pro.png";
+import Flashpilot from "../../public/project-Image/Flashpilot.png";
+import courseBox from "../../public/project-Image/courseBox.png";
+import codeEditor from "../../public/project-Image/codeEditor.png";
+import os from "../../public/project-Image/os.png";
+import pro from "../../public/project-Image/pro.png";
 import "../styles/Projects.css";
 
 const Projects = () => {
   const projects = [
     {
       id: 1,
-      image: ChatRoom,
-      title: " ChatRoom",
-      description: "A scalable, state-persistent real-time communication platform engineered for sub-100ms message delivery. Features include WebSocket multiplexing, distributed room state management, and optimized stateless authentication via JWT. The system minimizes network overhead using binary payloads and maintains fluid message sync across clients.",
-      tech: ["React JS", "MongoDB", "Node JS", "Express JS", "Socket.io", "Nodemailer", "JWT", "Axios"],
-      github: "https://github.com/dharmapal25/ChatRoom",
-      live: "chatroom-hub.vercel.app/",
+      image: Flashpilot,
+      title: "Flashpilot",
+      description: "FlashGPT is a full-stack AI chat app that lets you talk to multiple AI models — GPT, Llama, DeepSeek, and Qwen — all in one place. Switch between models anytime without losing context. Every conversation is saved so you can always pick up from where you left off. Login is secured via Google OAuth with JWT session handling and API rate limiting. Chats auto-delete after 30 days and the app is installable on any device as a PWA.",
+      tech: ["React JS", "MongoDB", "Node JS", "Express JS", "Groq SDK", "Nodemailer", "JWT", "Google OAuth2", "PWA"],
+      github: "https://github.com/dharmapal25/FlashGPT",
+      live: "https://flashpilot.vercel.app",
     },
     {
       id: 2,
-      image: FlashGPT,
-      title: "FlashGPT",
-      description: "A full-stack AI conversational platform utilizing custom RAG (Retrieval-Augmented Generation) pipelines for persistent long-term memory. The system manages multi-dimensional semantic lookup using high-dimensional vector embeddings, dynamically refreshing user context to deliver zero-shot, highly relevant responses. Focus on vector DB optimization and latency-sensitive inference.",
-      tech: ["Groq", "RAG", "Gemini API", "React JS", "Express JS", "MongoDB", "Pinecone", "Google-Auth"],
-      github: "https://github.com/dharmapal25/FlashGPT",
-      live: "flashgpt-ai.vercel.app/",
+      image: courseBox,
+      title: "Course-Box",
+      description: "Course-Box is a full-stack e-learning platform for students and instructors. Students can browse, buy courses via Razorpay, and get instant access after payment. Instructors can upload courses through protected routes with role-based access. Firebase Google Auth handles login, JWT with HTTP-only cookies keeps sessions secure, and ImageKit CDN with lazy loading ensures fast media delivery.",
+      tech: ["React JS", "CSS", "Express JS", "Mongo Atlas", "Swiper JS", "Firebase Auth", "Razorpay", "ImageKit", "(RBAC)"],
+      github: "https://github.com/dharmapal25/course-box",
+      live: "https://course-box.vercel.app",
     },
     {
       id: 3,
+      image: codeEditor,
+      title: "Code-Editor",
+      description: "Flash Code Editor is a browser-based code editor supporting JavaScript, Python, Java, and HTML. Switch languages anytime without losing your code and run it directly in the browser. Code execution runs inside Docker containers — each language gets its own isolated environment so nothing affects the host server. No setup needed — just open and start coding.",
+      tech: ["React JS", "Express JS", "Typescript", "Docker", "CSS"],
+      github: "https://github.com/dharmapal25/code-editor",
+      live: "https://flash-code-editor.onrender.com",
+    },
+    {
+      id: 4,
       image: os,
       title: "Web OS",
       description: "A resource-optimized browser-based operating system simulation. It implements micro-frontend sandboxing for independent app states, concurrent process visualization using optimized DOM rendering, and a lightweight file-system abstraction. The focus is on decoupling application state from the windowing layer to ensure consistent multi-tasking performance in-tab.",
       tech: ["React JS", "imagekit.io", "react-rnd", "DOM", "CSS"],
-      github: "https://github.com/dharmapal25/FlashGPT",
-      live: "flashgpt-ai.vercel.app/",
+      github: "https://github.com/dharmapal25/WEB-OS",
+      live: "https://flashos.vercel.app",
     },
     {
-      id: 4,
+      id: 5,
       image: pro,
       title: "Portfolio",
       description: "A highly optimized, performant digital architecture showcasing personal milestones. Features include asynchronous module loading, state-driven dynamic routing, and fluid transition orchestration to demonstrate clean architectural principles and asynchronous programming workflows.",
       tech: ["React", "Linus", "Gsap", "React-bits", "CSS"],
       github: "https://github.com/dharmapal25/WEB-OS",
-      live: "https://flashos.vercel.app/",
+      live: "https://dharmapal.vercel.app/",
     },
 
   ];

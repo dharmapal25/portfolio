@@ -1,6 +1,6 @@
 import React from "react";
 import Atropos from "atropos/react";
-import ColorBends from "./ColorBends";
+import ColorBends from '../components/Libraries/ColorBends'
 
 import { BsGithub } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";

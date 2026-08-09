@@ -14,7 +14,7 @@ import {
 import { TbApi, TbBrandThreejs } from "react-icons/tb";
 import { BiData } from "react-icons/bi";
 import "../styles/Skills.css";
-import ColorBends from "./ColorBends";
+import ColorBends from '../components/Libraries/ColorBends'
 
 
 // ── SKILLS DATA 

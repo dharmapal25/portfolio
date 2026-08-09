@@ -3,7 +3,7 @@ const aiResponse = require("../controllers/ai.controller");
 
 const aiRoute = express.Router();
 
-aiRoute.post("/me",aiResponse);
+aiRoute.post("/ai",aiResponse);
 
 
 module.exports = aiRoute

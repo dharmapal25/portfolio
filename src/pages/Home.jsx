@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
-import Threads from './Threads'
+import Threads from '../components/Libraries/Threads'
+import Chatbot from '../components/Chatbot'
+
 
 
 export default function Home() {
@@ -23,7 +25,7 @@ export default function Home() {
 
         <p className="home__greeting"><span style={{ color: "#fff", fontSize: "20px" }} ></span></p>
 
-        <h1 className="home__name">
+        {/* <h1 className="home__name">
           Turning Ideas Into Production -Ready{' '}
           <span className="web-tag">
             <span className="web-tag__bracket">&lt;</span>
@@ -31,7 +33,9 @@ export default function Home() {
             <span className="web-tag__bracket">/&gt;</span>
           </span>{' '}
           Applications.<span className="cursor">_</span>
-        </h1>
+        </h1> */}
+
+        <Chatbot/>
 
         <h2 className="home__role">
           <span>Full-Stack</span> Developer.

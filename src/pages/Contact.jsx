@@ -3,7 +3,7 @@ import { GrGithub } from 'react-icons/gr'
 import '../styles/Contact.css'
 import '../styles/App.css'
 import Form from '../components/Form'
-import ColorBends from './ColorBends'
+import ColorBends from '../components/Libraries/ColorBends'
 
 export default function Contact() {
   return (

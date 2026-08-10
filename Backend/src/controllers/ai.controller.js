@@ -17,7 +17,7 @@ async function aiResponse(req, res) {
                     content: message,
                 },
             ],
-            max_tokens: 1000,
+            max_tokens: 500,
         });
 
         const aiMessage = response.choices[0].message.content;

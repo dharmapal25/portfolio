@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import useAiResponse from "../hooks/useAiResponse";
 import "./Chatbot.css";
 
@@ -107,7 +109,9 @@ const Chatbot = () => {
                                 className={`message-row ${msg.role}`}
                             >
                                 <div className="message-bubble">
-                                    {msg.content}
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                        {msg.content}
+                                    </ReactMarkdown>
                                 </div>
                             </div>
                         ))}

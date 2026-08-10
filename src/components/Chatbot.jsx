@@ -19,9 +19,10 @@ const Chatbot = () => {
     // Keep the latest user or AI message visible automatically.
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({
-            behavior: "smooth"
+            behavior: "smooth",
+              block: "nearest"
         });
-    }, [messages, loading]);
+    }, [messages,loading]);
 
     const options = [
         {

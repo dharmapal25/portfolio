@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.use(cors({
     origin: process.env.FRONTEND_URL,
-    methods: ["get", "post"]
+    methods: ["GET", "POST"]
 }))
 
 

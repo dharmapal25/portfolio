@@ -48,7 +48,6 @@ const Chatbot = () => {
 
         if (!data) return;
 
-        // Chat history me user + AI dono add
         setMessages((prev) => [
             ...prev,
             {

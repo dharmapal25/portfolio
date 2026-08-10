@@ -5,7 +5,7 @@ import Timeline from '../components/Timeline'
 import ColorBends from '../components/Libraries/ColorBends'
 const facts = [
   'LIT Lucknow — B.Tech CSE',
-  '2nd Year Student',
+  '3nd Year Student',
   'Lucknow, India',
   " Always building something new"
 ]
@@ -42,7 +42,7 @@ export default function About() {
             <div className="about__text">
               
               <p>
-                I'm <strong>Dharmapal</strong>, a 2nd-year Computer Science student at{' '}
+                I'm <strong>Dharmapal</strong>, a 3nd-year Computer Science student at{' '}
                 <span className="accent">LIT Lucknow</span> who'd rather build than just
                 study theory. I enjoy turning ideas into real, working products that
                 solve actual problems — not just textbook projects.

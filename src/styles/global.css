@@ -62,27 +62,25 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
 }
-
 ::-webkit-scrollbar {
-  width: 6px;
+    width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 1px;
+    background: #3a3542;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
-
-::selection {
-  background: var(--accent);
-  color: var(--bg-primary);
+    background: var(--accent);
+    border: 2px solid transparent;
+    background-clip: padding-box;
 }
 
 a {

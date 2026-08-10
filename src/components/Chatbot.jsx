@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import useAiResponse from "../hooks/useAiResponse";
@@ -8,11 +8,20 @@ const Chatbot = () => {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
 
+    const messagesEndRef = useRef(null);
+
     const {
         fetchResponse,
         loading,
         error
     } = useAiResponse();
+
+    // Keep the latest user or AI message visible automatically.
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({
+            behavior: "smooth"
+        });
+    }, [messages, loading]);
 
     const options = [
         {
@@ -40,10 +49,9 @@ const Chatbot = () => {
 
         const userMessage = message.trim();
 
-        // Input clear
         setMessage("");
 
-        // API call
+        // Send the user's message and add both messages to the chat.
         const data = await fetchResponse(userMessage);
 
         if (!data) return;
@@ -64,6 +72,7 @@ const Chatbot = () => {
     const handleOption = async (prompt) => {
         if (loading) return;
 
+        // Quick options use the same AI request flow as the textarea.
         const data = await fetchResponse(prompt);
 
         if (!data) return;
@@ -85,21 +94,19 @@ const Chatbot = () => {
         <div className="chat-container">
 
             <h1 className="chat-title">
-                Hi, I'm <span>Dharmapal Veerendrakumar Bharati</span>
+                Hi, I'm <span>Dharmapal </span>
             </h1>
 
             <div className="chat-box">
 
                 <div className="chat-content" data-lenis-prevent>
 
-                    {/* Empty state */}
                     {messages.length === 0 && !loading && !error && (
                         <p className="chat-placeholder">
                             Ask me anything about Dharmapal...
                         </p>
                     )}
 
-                    {/* Messages */}
                     <div className="messages">
 
                         {messages.map((msg, index) => (
@@ -115,7 +122,6 @@ const Chatbot = () => {
                             </div>
                         ))}
 
-                        {/* Loading */}
                         {loading && (
                             <div className="message-row ai">
                                 <div className="message-bubble chat-loading">
@@ -124,9 +130,10 @@ const Chatbot = () => {
                             </div>
                         )}
 
+                        <div ref={messagesEndRef} />
+
                     </div>
 
-                    {/* Error */}
                     {error && (
                         <div className="message-row ai">
                             <div className="message-bubble chat-error">
@@ -159,10 +166,7 @@ const Chatbot = () => {
                         placeholder="Ask anything about Dharmapal..."
                         rows={1}
                         onKeyDown={(e) => {
-                            if (
-                                e.key === "Enter" &&
-                                !e.shiftKey
-                            ) {
+                            if (e.key === "Enter" && !e.shiftKey) {
                                 e.preventDefault();
                                 handleSubmit(e);
                             }

@@ -4,7 +4,6 @@ import API from "../services/api";
 const useAiResponse = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-    const [response, setResponse] = useState("");
 
     const fetchResponse = async (message) => {
         try {
@@ -15,12 +14,12 @@ const useAiResponse = () => {
                 message
             });
 
-            setResponse(res.data.message);
+            console.log("API RESPONSE:", res.data);
 
-            return res.data.message;
+            return res.data;
 
         } catch (err) {
-            console.error(err);
+            console.error("AI ERROR:", err);
 
             if (err.response) {
                 setError(
@@ -32,6 +31,8 @@ const useAiResponse = () => {
                 setError("Something went wrong");
             }
 
+            return null;
+
         } finally {
             setLoading(false);
         }
@@ -39,7 +40,6 @@ const useAiResponse = () => {
 
     return {
         fetchResponse,
-        response,
         loading,
         error
     };

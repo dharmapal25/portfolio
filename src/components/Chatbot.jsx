@@ -4,10 +4,10 @@ import "./Chatbot.css";
 
 const Chatbot = () => {
     const [message, setMessage] = useState("");
+    const [messages, setMessages] = useState([]);
 
     const {
         fetchResponse,
-        response,
         loading,
         error
     } = useAiResponse();
@@ -36,52 +36,100 @@ const Chatbot = () => {
 
         if (!message.trim() || loading) return;
 
-        await fetchResponse(message);
+        const userMessage = message.trim();
 
+        // Input clear
         setMessage("");
+
+        // API call
+        const data = await fetchResponse(userMessage);
+
+        if (!data) return;
+
+        // Chat history me user + AI dono add
+        setMessages((prev) => [
+            ...prev,
+            {
+                role: "user",
+                content: data.message
+            },
+            {
+                role: "ai",
+                content: data.ai
+            }
+        ]);
     };
 
     const handleOption = async (prompt) => {
         if (loading) return;
 
-        setMessage(prompt);
-        await fetchResponse(prompt);
-        setMessage("");
+        const data = await fetchResponse(prompt);
+
+        if (!data) return;
+
+        setMessages((prev) => [
+            ...prev,
+            {
+                role: "user",
+                content: data.message
+            },
+            {
+                role: "ai",
+                content: data.ai
+            }
+        ]);
     };
 
     return (
         <div className="chat-container">
 
             <h1 className="chat-title">
-                Hi, I'm <span> Dharmapal Veerendrakumar bharati</span>
+                Hi, I'm <span>Dharmapal Veerendrakumar Bharati</span>
             </h1>
 
             <div className="chat-box">
 
-                <div className="chat-content">
+                <div className="chat-content" data-lenis-prevent>
 
-                    {!response && !loading && (
+                    {/* Empty state */}
+                    {messages.length === 0 && !loading && !error && (
                         <p className="chat-placeholder">
                             Ask me anything about Dharmapal...
                         </p>
                     )}
 
-                    {loading && (
-                        <p className="chat-loading">
-                            Thinking...
-                        </p>
-                    )}
+                    {/* Messages */}
+                    <div className="messages">
 
+                        {messages.map((msg, index) => (
+                            <div
+                                key={index}
+                                className={`message-row ${msg.role}`}
+                            >
+                                <div className="message-bubble">
+                                    {msg.content}
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* Loading */}
+                        {loading && (
+                            <div className="message-row ai">
+                                <div className="message-bubble chat-loading">
+                                    Thinking...
+                                </div>
+                            </div>
+                        )}
+
+                    </div>
+
+                    {/* Error */}
                     {error && (
-                        <p className="chat-error">
-                            {error}
-                        </p>
-                    )}
-
-                    {response && !loading && (
-                        <p className="chat-response">
-                            {response}
-                        </p>
+                        <div className="message-row ai">
+                            <div className="message-bubble chat-error">
+                                {error}
+                            </div>
+                        </div>
                     )}
 
                 </div>
@@ -105,10 +153,13 @@ const Chatbot = () => {
                     <textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Ask anything about dharmapal..."
+                        placeholder="Ask anything about Dharmapal..."
                         rows={1}
                         onKeyDown={(e) => {
-                            if (e.key === "Enter" && !e.shiftKey) {
+                            if (
+                                e.key === "Enter" &&
+                                !e.shiftKey
+                            ) {
                                 e.preventDefault();
                                 handleSubmit(e);
                             }

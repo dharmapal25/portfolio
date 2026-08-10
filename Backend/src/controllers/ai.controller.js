@@ -1,4 +1,5 @@
 const groq = require("../config/groq");
+const context = require("../prompt/me");
 
 async function aiResponse(req, res) {
     try {
@@ -8,6 +9,10 @@ async function aiResponse(req, res) {
             model: process.env.OPENAI_MODEL,
             messages: [
                 {
+                    role: "system",
+                    content: context
+                },
+                {
                     role: "user",
                     content: message,
                 },
@@ -16,9 +21,11 @@ async function aiResponse(req, res) {
         });
 
         const aiMessage = response.choices[0].message.content;
-
+        console.log(response.choices[0].message.content)
+        // console.log("response : ", response)
         res.status(200).json({
-            message: aiMessage,
+            message,
+            ai: aiMessage,
         });
 
     } catch (err) {

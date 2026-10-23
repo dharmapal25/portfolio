@@ -6,6 +6,7 @@ import { BsGithub } from "react-icons/bs";
 import { BiLinkExternal } from "react-icons/bi";
 
 import Flashpilot from "../../public/project-Image/Flashpilot.png";
+import OzzyExplain from "../../public/project-Image/OzzyExplain.png";
 import courseBox from "../../public/project-Image/courseBox.png";
 import codeEditor from "../../public/project-Image/codeEditor.png";
 import os from "../../public/project-Image/os.png";
@@ -14,8 +15,19 @@ import "../styles/Projects.css";
 
 const Projects = () => {
   const projects = [
+
     {
       id: 1,
+      image: OzzyExplain,
+      title: "Ozzy-Explain",
+      description: "Ozzy is an AI-powered coding assistant that helps you understand and explore your projects. Upload a codebase as a ZIP or add individual files, then ask questions and get answers grounded in your project using semantic search. It can process source code, images, PDFs, and office documents. Google OAuth secures login, chat workspaces save your conversation history, and inactive chats are automatically deleted after 30 days.",
+      tech: ["React JS", "CSS", "Node JS", "Express JS", "MongoDB", "Groq SDK", "Google Gemini", "LangChain", "Pinecone", "Multer", "Google OAuth2", "JWT"],
+      github: "https://github.com/dharmapal25/Ozzy",
+      live: "https://ozzy-explain.vercel.app",
+    },
+
+    {
+      id: 2,
       image: Flashpilot,
       title: "Flashpilot",
       description: "FlashGPT is a full-stack AI chat app that lets you talk to multiple AI models — GPT, Llama, DeepSeek, and Qwen — all in one place. Switch between models anytime without losing context. Every conversation is saved so you can always pick up from where you left off. Login is secured via Google OAuth with JWT session handling and API rate limiting. Chats auto-delete after 30 days and the app is installable on any device as a PWA.",
@@ -24,7 +36,7 @@ const Projects = () => {
       live: "https://flashpilot.vercel.app",
     },
     {
-      id: 2,
+      id: 3,
       image: courseBox,
       title: "Course-Box",
       description: "Course-Box is a full-stack e-learning platform for students and instructors. Students can browse, buy courses via Razorpay, and get instant access after payment. Instructors can upload courses through protected routes with role-based access. Firebase Google Auth handles login, JWT with HTTP-only cookies keeps sessions secure, and ImageKit CDN with lazy loading ensures fast media delivery.",
@@ -33,7 +45,7 @@ const Projects = () => {
       live: "https://course-box.vercel.app",
     },
     {
-      id: 3,
+      id: 4,
       image: codeEditor,
       title: "Code-Editor",
       description: "Flash Code Editor is a browser-based code editor supporting JavaScript, Python, Java, and HTML. Switch languages anytime without losing your code and run it directly in the browser. Code execution runs inside Docker containers — each language gets its own isolated environment so nothing affects the host server. No setup needed — just open and start coding.",
@@ -42,7 +54,7 @@ const Projects = () => {
       live: "https://flash-code-editor.onrender.com",
     },
     {
-      id: 4,
+      id: 5,
       image: os,
       title: "Web OS",
       description: "A resource-optimized browser-based operating system simulation. It implements micro-frontend sandboxing for independent app states, concurrent process visualization using optimized DOM rendering, and a lightweight file-system abstraction. The focus is on decoupling application state from the windowing layer to ensure consistent multi-tasking performance in-tab.",
@@ -51,7 +63,7 @@ const Projects = () => {
       live: "https://flashos.vercel.app",
     },
     {
-      id: 5,
+      id: 6,
       image: pro,
       title: "Portfolio",
       description: "A highly optimized, performant digital architecture showcasing personal milestones. Features include asynchronous module loading, state-driven dynamic routing, and fluid transition orchestration to demonstrate clean architectural principles and asynchronous programming workflows.",
